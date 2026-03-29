@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Banco Master — análise comparativa com peers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="intro">
+        <h1>Banco Master — análise comparativa com peers</h1>
+        <p class="lead">
+          Esta página resume três leituras sobre o tamanho e a dinâmica do ativo em relação a um grupo de instituições
+          comparáveis. Em cada aba há a definição da métrica, como interpretar o gráfico e ressalvas metodológicas.
+        </p>
+        <p class="meta">
+          Dados: arquivos CSV em <code>data/extracao_*.csv</code> (série trimestral). Peers: média aritmética das
+          instituições listadas, exceto o Banco Master.
+        </p>
+      </header>
+
+      <div class="tabs-widget">
+        <ul class="tablist" role="tablist" aria-label="Análises">
+          <li role="presentation">
+            <button type="button" class="tab" id="tab-alav" role="tab" aria-selected="true" aria-controls="panel-alav" tabindex="0">
+              Alavancagem
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" class="tab" id="tab-base" role="tab" aria-selected="false" aria-controls="panel-base" tabindex="-1">
+              Ativo base 100
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" class="tab" id="tab-cresc" role="tab" aria-selected="false" aria-controls="panel-cresc" tabindex="-1">
+              Crescimento do ativo
+            </button>
+          </li>
+        </ul>
+
+        <div id="panel-alav" class="tabpanel" role="tabpanel" aria-labelledby="tab-alav">
+          <h2>Alavancagem financeira</h2>
+          <section>
+            <h3>O que é</h3>
+            <p>
+              Alavancagem aqui é o quociente <strong>ativo total ÷ patrimônio líquido</strong>, por trimestre. Indica
+              quantas vezes o ativo é maior que o PL: valores mais altos significam mais ativos financiados por cada R$
+              de capital próprio (estrutura mais alavancada em sentido contábil).
+            </p>
+          </section>
+          <section>
+            <h3>Como ler o gráfico</h3>
+            <p>
+              O eixo horizontal mostra os trimestres (formato 1T24, 2T24…). O vertical é a alavancagem em “vezes”. A
+              linha em <strong>vermelho escuro</strong> é o Banco Master; a linha em <strong>cinza</strong> é a
+              <strong>média dos peers</strong> no mesmo trimestre. Pontos faltantes ou distorções podem surgir se o PL
+              for muito baixo ou negativo em algum período.
+            </p>
+          </section>
+          <section>
+            <h3>Interpretação</h3>
+            <p>
+              Comparar Master à média dos peers ajuda a situar a instituição no grupo. Uma trajetória acima da média pode
+              refletir maior uso de dívida em relação ao capital próprio; abaixo da média, estrutura menos alavancada —
+              sempre em conjunto com qualidade do ativo, funding e regulação, que este gráfico não captura sozinho.
+            </p>
+          </section>
+          <section>
+            <h3>Limitações</h3>
+            <p>
+              A média dos peers não é ponderada pelo tamanho do ativo de cada banco. O universo de instituições segue o
+              que está nos CSVs. O indicador é sensível ao denominador (PL); interpretações exigem consistência dos dados
+              trimestrais.
+            </p>
+          </section>
+          <figure class="figure-wrap">
+            <img
+              src="figures/grafico_alavancagem.png"
+              alt="Gráfico de linhas: alavancagem ativo sobre patrimônio líquido do Banco Master versus média dos peers ao longo dos trimestres."
+              width="1000"
+              height="500"
+              loading="eager"
+            />
+          </figure>
+        </div>
+
+        <div id="panel-base" class="tabpanel" role="tabpanel" aria-labelledby="tab-base" hidden>
+          <h2>Ativo total em índice base 100</h2>
+          <section>
+            <h3>O que é</h3>
+            <p>
+              Para cada instituição, o <strong>ativo total</strong> é reescalado para um índice: o <strong>menor trimestre
+              da amostra</strong> recebe valor 100; os trimestres seguintes mostram a evolução percentual relativa a
+              essa referência. Assim dá para comparar a <em>trajetória</em> do tamanho do ativo sem depender da unidade
+              absoluta.
+            </p>
+          </section>
+          <section>
+            <h3>Como ler o gráfico</h3>
+            <p>
+              O título indica qual trimestre foi usado como referência (100). O eixo vertical é o índice em %. A linha
+              <strong>vermelha</strong> é o Banco Master; a <strong>cinza</strong>, a média dos peers. A linha
+              tracejada horizontal em 100 marca a base. Crescimento acima de 100 indica ativo maior do que no trimestre
+              de referência.
+            </p>
+          </section>
+          <section>
+            <h3>Interpretação</h3>
+            <p>
+              Este gráfico destaca <strong>crescimento relativo</strong> desde o início da janela observada. Master e
+              média dos peers podem divergir se os bancos tiveram ritmos diferentes de expansão do ativo no período.
+            </p>
+          </section>
+          <section>
+            <h3>Limitações</h3>
+            <p>
+              O índice depende do trimestre inicial da amostra: outra janela temporal mudaria a base. Não incorpora
+              ajustes de risco ou composição do ativo. A média dos peers permanece não ponderada.
+            </p>
+          </section>
+          <figure class="figure-wrap">
+            <img
+              src="figures/grafico_base100_ativo.png"
+              alt="Gráfico de linhas: índice base 100 do ativo total do Banco Master versus média dos peers por trimestre, com linha de referência em 100."
+              width="1000"
+              height="500"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+
+        <div id="panel-cresc" class="tabpanel" role="tabpanel" aria-labelledby="tab-cresc" hidden>
+          <h2>Crescimento do ativo (%)</h2>
+          <section>
+            <h3>O que é</h3>
+            <p>
+              Para cada trimestre, utiliza-se a variável <strong>Asset Growth (%)</strong> dos dados: taxa percentual de
+              crescimento do ativo. O gráfico traça a série do Banco Master e a <strong>média dos peers</strong>, e
+              acrescenta linhas de <strong>tendência</strong> obtidas por <strong>regressão linear</strong> sobre o tempo
+              (ordem dos trimestres), para suavizar a direção geral da série.
+            </p>
+          </section>
+          <section>
+            <h3>Como ler o gráfico</h3>
+            <p>
+              Linhas contínuas em <strong>laranja</strong> (Master) e <strong>cinza</strong> (média dos peers) são os
+              valores observados por trimestre. As linhas <strong>tracejadas</strong> na mesma cor família são as
+              tendências estimadas. A legenda pode aparecer à direita do gráfico; o eixo vertical é o crescimento do
+              ativo em %.
+            </p>
+          </section>
+          <section>
+            <h3>Interpretação</h3>
+            <p>
+              A tendência linear resume se, no período, o crescimento médio trimestral acompanha uma subida ou descida
+              gradual. Comparar inclinação entre Master e peers indica se o ritmo de crescimento do ativo foi mais forte
+              ou mais fraco que a média do grupo, na janela analisada.
+            </p>
+          </section>
+          <section>
+            <h3>Limitações</h3>
+            <p>
+              Regressão linear não implica causalidade nem prevê trimestres futuros. Outliers trimestrais puxam a
+              tendência. A média dos peers trata todos os bancos com o mesmo peso. Eventos únicos (fusões, mudanças
+              contábeis) podem distorcer taxas de crescimento.
+            </p>
+          </section>
+          <figure class="figure-wrap">
+            <img
+              src="figures/grafico_crescimento_ativo.png"
+              alt="Gráfico de linhas: crescimento percentual do ativo do Banco Master e média dos peers, com linhas de tendência linear tracejadas."
+              width="1200"
+              height="600"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </div>
+    </div>
+    <script src="tabs.js"></script>
+  </body>
+</html>
