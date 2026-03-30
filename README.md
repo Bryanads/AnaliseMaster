@@ -4,6 +4,10 @@ A interface interativa com os gráficos e as interpretações financeiras está 
 
 **[analisemaster.netlify.app](https://analisemaster.netlify.app/)**
 
+## Grupo:
+
+Bryan Amorim, Julia Curto, Gustavo Salvador, Luã Macedo e João Gabriel Guedes
+
 # Análise de Indicadores Financeiros: Banco Master vs Peers
 
 Este repositório contém o código-fonte da interface web e os scripts de extração de dados desenvolvidos para a análise comparativa do balanço do Banco Master em relação à média de seus pares no mercado. 
