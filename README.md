@@ -1,14 +1,14 @@
+## Interface para visualização
+
+A interface interativa com os gráficos e as interpretações financeiras está publicada e pode ser acessada aqui:
+
+**[analisemaster.netlify.app](https://analisemaster.netlify.app/)**
+
 # Análise de Indicadores Financeiros: Banco Master vs Peers
 
 Este repositório contém o código-fonte da interface web e os scripts de extração de dados desenvolvidos para a análise comparativa do balanço do Banco Master em relação à média de seus pares no mercado. 
 
 O foco do estudo é avaliar o ritmo de expansão do balanço e o uso de capital de terceiros (alavancagem) ao longo dos últimos trimestres, estruturado como parte do escopo de projetos analíticos do IBMEC.
-
-## 📊 Aplicação em Produção
-
-A interface interativa com os gráficos e as interpretações financeiras está publicada e pode ser acessada aqui:
-
-**👉 [analisemaster.netlify.app](https://analisemaster.netlify.app/)**
 
 ## ⚙️ Arquitetura e Fluxo de Dados
 
